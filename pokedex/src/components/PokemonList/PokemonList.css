@@ -1,3 +1,24 @@
 .pokeman_list_wrapper{
     margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.controllers > button{
+    cursor: pointer;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    background-color: black;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+
 }
