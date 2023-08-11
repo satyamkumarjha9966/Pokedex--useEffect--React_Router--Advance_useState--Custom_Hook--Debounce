@@ -1,0 +1,11 @@
+#pokedex_heading{
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.outer_pokedex{
+    display: flex;
+    flex-direction: column;
+}
+
