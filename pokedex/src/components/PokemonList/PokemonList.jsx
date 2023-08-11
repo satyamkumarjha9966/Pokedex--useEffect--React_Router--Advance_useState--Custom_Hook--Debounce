@@ -53,28 +53,27 @@ function PokemonList() {
             }
             
         }));
-        setPokemonListState({...pokemonListState, pokemonList: pokeListResult});
-        setPokemonListState({...pokemonListState, isLoading: false});
+        setPokemonListState({...pokemonListState, pokemonList: pokeListResult, isLoading: false});
         // setPokemonList(pokeListResult);
         // setIsLoading(false);
     }
 
     useEffect(() => {
         downloadPokemons();
-    }, [pokedexUrl])
+    }, [pokemonListState.pokedexUrl])
 
   return (
     <div className="pokeman_list_wrapper">
         <div className="pokemon_wrapper">
-            {(isLoading) 
+            {(pokemonListState.isLoading) 
             ? 'Loading....' 
-            : pokemonList.map((p) => <Pokemon name={p.name} url={p.image} key={p.id} id={p.id} />)
+            : pokemonListState.pokemonList.map((p) => <Pokemon name={p.name} url={p.image} key={p.id} id={p.id} />)
             }
         </div>
 
         <div className="controllers">
-            <button disabled={prevUrl == null} onClick={() => setPokedexUrl(prevUrl)} >Prev</button>
-            <button disabled={nextUrl == null} onClick={() => setPokedexUrl(nextUrl)} >Next</button>
+            <button disabled={pokemonListState.prevUrl == null} onClick={() => setPokemonListState({...pokemonListState, pokedexUrl: pokemonListState.prevUrl})} >Prev</button>
+            <button disabled={pokemonListState.nextUrl == null} onClick={() => setPokemonListState({...pokemonListState, pokedexUrl: pokemonListState.nextUrl})} >Next</button>
         </div>
     </div>
   )
