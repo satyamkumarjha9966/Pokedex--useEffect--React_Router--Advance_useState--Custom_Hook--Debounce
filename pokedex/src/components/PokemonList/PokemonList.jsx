@@ -22,7 +22,7 @@ function PokemonList() {
     async function downloadPokemons() {
 
         // setIsLoading(true)
-        setPokemonListState({...pokemonListState, isLoading: true});
+        setPokemonListState((state) => ({...state, isLoading: true}));
 
 
         // This downloads list of 20 pokemons
@@ -31,7 +31,10 @@ function PokemonList() {
         // We get the array of pokemon from results
         const pokemonResults = response.data.results;
         console.log(response.data);
-        setPokemonListState({...pokemonListState, nextUrl: response.data.next, prevUrl: response.data.previous});
+        setPokemonListState((state) => ({
+            ...state, 
+            nextUrl: response.data.next, 
+            prevUrl: response.data.previous}));
         // setNextUrl(response.data.next);
         // setPrevUrl(response.data.previous);
 
@@ -53,7 +56,10 @@ function PokemonList() {
             }
             
         }));
-        setPokemonListState({...pokemonListState, pokemonList: pokeListResult, isLoading: false});
+        setPokemonListState((state) => ({
+            ...state,
+            pokemonList: pokeListResult, 
+            isLoading: false}));
         // setPokemonList(pokeListResult);
         // setIsLoading(false);
     }
